@@ -23,7 +23,7 @@ export default function Account({ mode = 'login' }) {
     event.currentTarget.reset();
   };
   return <section className="page account">
-    <Link to="/">{t('Back to the library')}</Link>
+    <Link to="/">{t('Back to screens')}</Link>
     <div className="account-card">
       <p className="eyebrow">{t('Interactive example')}</p><h1>{t(headings[mode])}</h1>
       <p className="muted">{t('This is a wireframe. Use example details, never a real password.')}</p>

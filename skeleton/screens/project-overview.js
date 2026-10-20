@@ -1,25 +1,21 @@
 import React, { useState } from 'react';
-import { ArrowLeft, Check, Circle, Monitor, Smartphone } from 'lucide-react';
-
+import { Button, Field, Panel } from '../components/wireframe.js';
 import { useTranslation } from '../components/i18n.js';
 
-const initial = [{ title: 'Capture the project brief', done: true }, { title: 'Review the first wireframe', done: false }, { title: 'Agree on the next steps', done: false }];
+const initial = [{ name: 'Example item A', status: 'Draft' }, { name: 'Example item B', status: 'Ready' }, { name: 'Example item C', status: 'Draft' }];
 export default function Overview() {
   const { t } = useTranslation();
-  const [tasks, setTasks] = useState(initial);
-  const [narrow, setNarrow] = useState(false);
-  return (
-    <div className="page">
-      <div className="preview-toolbar"><a href="#/"><ArrowLeft size={16} />{t("Library")}</a><span>{t("Project overview")} <small>· {t("Example wireframe")}</small></span><div className="device-controls"><button aria-label="Desktop preview" aria-pressed={!narrow} onClick={() => setNarrow(false)}><Monitor size={18} /></button><button aria-label="Mobile preview" aria-pressed={narrow} onClick={() => setNarrow(true)}><Smartphone size={18} /></button></div></div>
-      <section className={`example-frame ${narrow ? 'narrow' : ''}`} aria-label="Interactive project overview wireframe">
-        <p className="eyebrow">{t("Your workspace")}</p><h1>{t("Good ideas start here.")}</h1><p className="lead">{t("A clear brief, a shared plan and one useful step at a time.")}</p>
-        <div className="example-summary"><span className="status-dot" /><strong>{t("Discovery")}</strong><span>{tasks.filter((task) => task.done).length} / {tasks.length} · {t("Steps complete")}</span></div>
-        <h2>{t("Next steps")}</h2><p className="muted">{t("Try marking an item complete. These are example tasks.")}</p>
-        <div className="task-list">{tasks.map((task, index) => <button key={t(task.title)} aria-pressed={task.done} onClick={() => setTasks((current) => current.map((item, i) => i === index ? { ...item, done: !item.done } : item))}>
-          {task.done ? <Check size={18} /> : <Circle size={18} />}<span>{t(task.title)}</span><small>{t(task.done ? 'Done' : 'To do')}</small>
-        </button>)}</div>
-        <button className="text-button" onClick={() => setTasks(initial)}>{t("Reset example")}</button>
-      </section>
-    </div>
-  );
+  const [query, setQuery] = useState('');
+  const [items, setItems] = useState(initial);
+  const [selection, select] = useState(null);
+  const filtered = items.filter((item) => t(item.name).toLowerCase().includes(query.toLowerCase()));
+  return <div className="page"><div className="screen-frame screen-content">
+    <div className="page-heading"><div><h1>{t('Overview')}</h1><p className="description">{t('Browse and review items. Replace these examples with your project’s content.')}</p></div><Button onClick={() => setItems((current) => [...current, { name: 'New item', status: 'Draft' }])}>{t('Add item')}</Button></div>
+    <div className="wf-grid metrics"><Panel title={t('All items')}><strong>{items.length}</strong></Panel><Panel title={t('Draft')}><strong>{items.filter((item) => item.status === 'Draft').length}</strong></Panel><Panel title={t('Ready')}><strong>{items.filter((item) => item.status === 'Ready').length}</strong></Panel></div>
+    <Field label={t('Find an item')} type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder={t('Search by name')} />
+    <div className="wf-table-scroll"><table className="wf-table"><thead><tr><th>{t('Name')}</th><th>{t('Status')}</th><th><span className="sr-only">{t('Action')}</span></th></tr></thead><tbody>{filtered.map((item) => <tr key={items.indexOf(item)}><td>{t(item.name)}</td><td><span className="wf-tag">{t(item.status)}</span></td><td><button className="text-button" onClick={() => select(item)}>{t('View')}<span className="sr-only"> {t(item.name)}</span></button></td></tr>)}</tbody></table></div>
+    {!filtered.length ? <p className="empty-state">{t('No matching items. Try another name.')}</p> : null}
+    {selection ? <section className="item-detail" aria-label={t('Item details')}><div className="page-heading"><h2>{t(selection.name)}</h2><button className="text-button" onClick={() => select(null)}>{t('Close')}</button></div><p className="description">{t('Add the information your users need to make a decision.')}</p><Button variant="secondary" onClick={() => { setItems((current) => current.map((item) => item === selection ? { ...item, status: 'Ready' } : item)); select(null); }}>{t('Mark ready')}</Button></section> : null}
+    <p className="annotation">{t('Example data. Changes stay in this preview.')}</p>
+  </div></div>;
 }

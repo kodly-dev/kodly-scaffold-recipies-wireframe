@@ -1,6 +1,6 @@
 # Kodly Requirements recipe
 
-A small, complete starting point for the document library and wireframes in Kodly.
+A small, neutral starting point for a user's own product wireframes.
 It replaces `yo kodly-requirements` using the existing Kodly Git-recipe scaffolder.
 The generated files run directly in Wireframe Studio's **Sandpack** preview.
 There is no separate app server, build command, health check or npm generator.
@@ -12,18 +12,21 @@ There is no separate app server, build command, health check or npm generator.
 - Parent preview navigation (`STUDIO_NAVIGATE`, `WIREFRAME_READY`, `WIREFRAME_PATH_CHANGED`).
 - English/Japanese with language-change messages in both directions.
 - React and the dependencies already supplied by Wireframe Studio.
+- An editable `project.json` carries the owning workspace's name. No product branding is imposed.
 
 ## What is simpler
 
 - One route registry (`route.js`) and one shared account form, with small named screen files.
 - Browser hash history handles navigation, back, forward and refresh.
-- Ordinary CSS tokens replace runtime Tailwind CDN dependence. `library.css` keeps composition
+- Grayscale CSS tokens replace runtime Tailwind CDN dependence. `library.css` keeps composition
   styling separate from the shared `styles.css` supplied by Wireframe Studio.
 - Appearance follows the system unless the viewer chooses light/dark; theme and language
   preferences tolerate blocked embedded storage.
 - Demo authentication is labelled, stays in memory and never stores or sends passwords.
 - Forms use native accessible labels and validation, with inline results.
-- Example content is explicitly marked; project knowledge starts in `docs/project-brief.md`.
+- Buttons, fields, panels and crossed image placeholders form a small reusable library.
+- Home, item list/detail and account screens are examples to replace with the user's requirements.
+- The Components screen demonstrates the primitives; project knowledge starts in `docs/project-brief.md`.
 
 ## Scaffold
 

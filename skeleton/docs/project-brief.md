@@ -1,20 +1,24 @@
 # Project brief
 
-This is the shared starting point for the project. Replace these prompts with your team's decisions.
+Replace the prompts below with this project's agreed requirements.
 
-## Problem and audience
+## Users and problem
 
-What problem are we solving, and who experiences it?
+Who will use the product? What are they trying to accomplish?
 
-## Outcomes
+## Main journeys
 
-What should change for users? How will we know it worked?
+Describe the steps users take, the information they need, and the expected result.
 
-## Scope and decisions
+## Screens
 
-Record agreed scope, constraints, open questions and the source of each decision.
+List each screen, its purpose, key actions, empty states, validation and error feedback.
+Link each screen to its route in the wireframe.
 
-## Working with documents
+## Scope
 
-Upload source material into the project's document library. Ask Maestro to create a documentation task
-for Scribe, then review the proposed changes before publishing them for other agents.
+What is included? What is deliberately excluded?
+
+## Decisions and open questions
+
+Record the decision, its reason and any source material. Keep unresolved questions visible.

@@ -1,5 +1,8 @@
 import React from 'react';
+import project from '../project.json';
+import { useTranslation } from './i18n.js';
 
 export function Brand() {
-  return <span className="brand" aria-label="Kodly"><span aria-hidden="true" className="brand-mark">{'{'}<b>oo</b>{'}'}</span><strong>Kodly</strong></span>;
+  const { t } = useTranslation();
+  return <span className="project-name">{t(project.name)}</span>;
 }

@@ -1,10 +1,16 @@
-# template-base · Project library
+# Project wireframes
 
-Shared documents and interactive wireframes, created with Kodly.
+Sketch this project's screens and user flows before implementation.
 
-Open this Requirements project in Kodly Wireframe Studio. Its React files run inside
-the existing Sandpack preview; there is no separate application server or build setup.
+- `project.json`: your project name; editable independently of the screens.
+- `screens/`: small React screen files, registered in `route.js`.
+- `components/wireframe.js`: buttons, fields, panels and image placeholders.
+- `library.css`: grayscale visual rules; keep layout and interaction clear before adding branding.
+- `docs/project-brief.md`: the audience, goals, flows and decisions behind the screens.
+- `locales/`: English and Japanese labels.
 
-Documents live in `docs/`; UI screens live in `screens/` and are registered in `route.js`.
-The root `App.js` is the entry point for the embedded React wireframe preview.
-Scribe proposes document changes for review; publishing makes them shared project knowledge.
+Open this Requirements project in Wireframe Studio. Sandpack renders `App.js` directly.
+There is no application server, package installation, build command or health check.
+
+The initial screens and all data are examples. Replace them with the project's agreed requirements.
+Account screens simulate navigation only; never enter real credentials.
