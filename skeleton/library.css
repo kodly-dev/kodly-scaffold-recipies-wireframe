@@ -142,30 +142,6 @@
     display: none;
   }
 }
-.screen-nav {
-  display: flex;
-  gap: 2px;
-  padding: 8px 16px;
-  overflow-x: auto;
-  border-bottom: 1px solid var(--line);
-  background: var(--surface);
-}
-.screen-nav a {
-  flex: none;
-  padding: 6px 10px;
-  font-size: 12px;
-  color: var(--muted);
-  border: 1px solid transparent;
-  border-radius: 3px;
-}
-.screen-nav a[aria-current='page'] {
-  color: var(--ink);
-  border-color: var(--line);
-  background: var(--soft);
-}
-.screen-nav a:hover {
-  color: var(--ink);
-}
 .canvas-caption {
   max-width: 1080px;
   margin: auto;
@@ -555,9 +531,6 @@
   .preferences {
     width: 100%;
     margin: 0;
-  }
-  .screen-nav {
-    padding-inline: 8px;
   }
   .canvas-caption {
     padding: 16px 16px 8px;

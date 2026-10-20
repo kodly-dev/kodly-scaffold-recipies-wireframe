@@ -59,17 +59,6 @@ function Wireframes() {
           </label>
         </div>
       </header>
-      <nav className="screen-nav" aria-label={t('screens')}>
-        {routes.map((item) => (
-          <Link
-            key={item.path}
-            to={item.path}
-            aria-current={path === item.path ? 'page' : undefined}
-          >
-            {t(item.name)}
-          </Link>
-        ))}
-      </nav>
       <main>
         <div className="canvas-caption">
           <span>{t(route?.name || 'unknownScreen')}</span>
