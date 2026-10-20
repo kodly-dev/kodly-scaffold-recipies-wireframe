@@ -1,26 +1,54 @@
-import { test } from 'node:test';
-import assert from 'node:assert/strict';
-import fs from 'node:fs';
-import path from 'node:path';
+import { test } from "node:test";
+import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
+import { translate } from "../skeleton/components/translations.js";
 
-const root = path.resolve(import.meta.dirname, '../skeleton');
-const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
+const root = path.resolve(import.meta.dirname, "../skeleton");
+const read = (file) => fs.readFileSync(path.join(root, file), "utf8");
 const screens = fs
-  .readdirSync(path.join(root, 'screens'))
-  .filter((file) => file.endsWith('.js'))
+  .readdirSync(path.join(root, "screens"))
+  .filter((file) => file.endsWith(".js"))
   .map((file) => file.slice(0, -3));
-test('every screen follows Studio route, locale and document naming conventions', () => {
-  const routes = read('route.js');
-  const resources = read('components/i18n.js');
+test("screen namespaces do not shadow the common navigation labels", () => {
+  for (const language of ["en", "ja"]) {
+    const common = JSON.parse(read(`locales/common-${language}.json`));
+    const resources = { common };
+    for (const screen of screens) {
+      const namespace = screen.replace(/-([a-z])/g, (_, letter) =>
+        letter.toUpperCase(),
+      );
+      resources[namespace] = JSON.parse(
+        read(`locales/${screen}-${language}.json`),
+      );
+    }
+    for (const key of [
+      "login",
+      "signup",
+      "dashboard",
+      "components",
+      "forgotPassword",
+      "resetPassword",
+    ])
+      assert.equal(
+        translate(resources, key),
+        common[key],
+        `${language}/${key}`,
+      );
+  }
+});
+test("every screen follows Studio route, locale and document naming conventions", () => {
+  const routes = read("route.js");
+  const resources = read("components/i18n.js");
   for (const screen of screens) {
     assert.match(screen, /^[a-z]+(?:-[a-z]+)*$/);
     assert.ok(
       routes.includes(`./screens/${screen}.js`),
       `Registered screen ${screen}`,
     );
-    const route = screen === 'landing' ? '/' : `/${screen}`;
+    const route = screen === "landing" ? "/" : `/${screen}`;
     assert.ok(routes.includes(`path: '${route}'`), `Studio route ${route}`);
-    for (const language of ['en', 'ja']) {
+    for (const language of ["en", "ja"]) {
       const locale = `locales/${screen}-${language}.json`;
       assert.ok(fs.existsSync(path.join(root, locale)), locale);
       assert.ok(
@@ -38,7 +66,7 @@ test('every screen follows Studio route, locale and document naming conventions'
     assert.deepEqual(Object.keys(en).sort(), Object.keys(ja).sort(), screen);
     assert.ok(
       Object.values(ja).every(
-        (text) => typeof text === 'string' && text.trim(),
+        (text) => typeof text === "string" && text.trim(),
       ),
     );
   }
