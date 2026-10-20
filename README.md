@@ -29,6 +29,9 @@ There is no separate app server, build command, health check or npm generator.
 - Demo authentication is labelled, stays in memory and never stores or sends passwords.
 - Forms use native accessible labels and validation, with inline results.
 - Buttons, fields, panels and crossed image placeholders form a small reusable library.
+- Compact typography and spacing keep the prototype easy to scan. Fields have a quiet
+  fill and no outer outline; keyboard focus uses an inset underline. All dropdowns share
+  the same small inset caret, with native controls retained in forced-colors mode.
 - Home, item list/detail and account screens are examples to replace with the user's requirements.
 - The Components screen demonstrates the primitives; project knowledge starts in `docs/project-brief.md`.
 
