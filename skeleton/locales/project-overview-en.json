@@ -1,0 +1,17 @@
+{
+  "title": "Overview",
+  "description": "Browse and review items. Replace these examples with your project’s content.",
+  "addItem": "Add item",
+  "allItems": "All items",
+  "findItem": "Find an item",
+  "searchPlaceholder": "Search by name",
+  "itemA": "Example item A",
+  "itemB": "Example item B",
+  "itemC": "Example item C",
+  "newItem": "New item",
+  "noMatches": "No matching items. Try another name.",
+  "details": "Item details",
+  "detailsDescription": "Add the information your users need to make a decision.",
+  "markReady": "Mark ready",
+  "sampleData": "Example data. Changes stay in this preview."
+}

@@ -1,19 +1,15 @@
-# Wireframe guide
+# Building your wireframes
 
-Use these screens to explore this project's requirements. Keep the prototype simple:
-layout, content hierarchy and working interactions matter more than decoration.
+Each screen is a requirement, its interactive preview and its translated copy kept together.
 
-1. Update the project identity in `project.json`.
-2. Replace the sample content in `screens/` with the project's users, actions and data.
-3. Register new screens in `route.js`; navigation updates automatically.
-4. Reuse `Button`, `Panel`, `Field` and `Placeholder` from `components/wireframe.js`.
-5. Open the Components screen for examples of the grayscale building blocks.
-6. Document each flow and its acceptance rules alongside the project brief.
+1. Create `screens/{screen-name}.js` using lowercase names separated by hyphens.
+2. Register it in `route.js`. The path is `/{screen-name}`; only `screens/landing.js` uses `/`.
+3. Add `locales/{screen-name}-en.json` and `locales/{screen-name}-ja.json` and register both in `components/i18n.js`.
+4. Add `docs/{screen-name}-en.md` and `docs/{screen-name}-ja.md`. Studio pairs these documents with the screen by filename.
+5. Link the screen from an appropriate existing screen. Test both languages in Studio's screen selector and split view.
 
-Use thin borders, neutral fills and readable type. Image placeholders indicate where media will go.
-Keep empty states, form validation, keyboard access and narrow layouts working. Sample interactions
-remain in memory and do not create real accounts or send requests to external services.
+Use `useTranslation('login')` with `t('title')`, or `useTranslation()` with `t('login.title')`. Shared labels live in `common`. The legacy `landingPage`, `forgotPassword` and `resetPassword` namespaces remain available. Fallback text and `{{variable}}` interpolation follow the original generator's interface.
 
-Wireframe Studio renders the React files inside Sandpack. Preserve `App.js`, `screens/`,
-`components/`, `locales/` and `docs/`. `styles.css` is supplied by the host;
-project-specific styles belong in `library.css`. No separate server or build configuration is needed.
+Keep project-wide documents in `docs/` under descriptive names, distinct from screen names. Studio displays these separately. Use `-en.md` / `-ja.md` when a document has translated versions.
+
+Reuse the small primitives in `components/wireframe.js`. Keep the grayscale styling, thin outlines and image placeholders until a real visual design is agreed. All sample data and sign-in behavior stay in memory. This project runs inside Sandpack; it does not need a separate server or build configuration.

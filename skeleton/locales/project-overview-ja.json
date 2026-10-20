@@ -1,0 +1,17 @@
+{
+  "title": "概要",
+  "description": "項目を確認します。サンプルをプロジェクトの内容に置き換えてください。",
+  "addItem": "項目を追加",
+  "allItems": "すべての項目",
+  "findItem": "項目を検索",
+  "searchPlaceholder": "名前で検索",
+  "itemA": "サンプル項目 A",
+  "itemB": "サンプル項目 B",
+  "itemC": "サンプル項目 C",
+  "newItem": "新しい項目",
+  "noMatches": "該当する項目がありません。別の名前で検索してください。",
+  "details": "項目の詳細",
+  "detailsDescription": "利用者の判断に必要な情報を追加します。",
+  "markReady": "準備完了にする",
+  "sampleData": "サンプルデータです。変更はプレビュー内にのみ保存されます。"
+}

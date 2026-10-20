@@ -7,7 +7,30 @@ import Overview from './project-overview.js';
 export default function Dashboard() {
   const { isAuthenticated, setAuthenticated } = useAuth();
   const { navigate } = useNavigate();
-  const { t } = useTranslation();
-  if (!isAuthenticated) return <section className="page"><h1>{t('Your example dashboard')}</h1><p className="lead">{t('Sign in with example details to explore this screen.')}</p><Link to="/login">{t('Sign in')}</Link></section>;
-  return <><div className="demo-session"><span>{t('Example session · no real account')}</span><button className="text-button" onClick={() => { setAuthenticated(false); navigate('/login'); }}>{t('Sign out')}</button></div><Overview /></>;
+  const { t } = useTranslation('dashboard');
+  if (!isAuthenticated)
+    return (
+      <section className="page">
+        <h1>{t('title')}</h1>
+        <p className="lead">{t('description')}</p>
+        <Link to="/login">{t('login')}</Link>
+      </section>
+    );
+  return (
+    <>
+      <div className="demo-session">
+        <span>{t('exampleSession')}</span>
+        <button
+          className="text-button"
+          onClick={() => {
+            setAuthenticated(false);
+            navigate('/login');
+          }}
+        >
+          {t('signOut')}
+        </button>
+      </div>
+      <Overview />
+    </>
+  );
 }

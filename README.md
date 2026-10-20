@@ -8,7 +8,11 @@ There is no separate app server, build command, health check or npm generator.
 ## What stays familiar
 
 - `App.js`, `screens/`, `components/`, `locales/` and `docs/`.
-- Library/landing, dashboard, login, signup, forgot-password and reset-password examples.
+- Landing, dashboard, login, signup, forgot-password and reset-password screens.
+- Lowercase, hyphen-separated screen names; `/{screen}` routes, with `/` for landing.
+- `locales/{screen}-en.json` / `-ja.json` and matching `docs/{screen}-en.md` / `-ja.md`.
+- The generator's `Router`, `Route`, `Link`, `useNavigate`, `useLocation` and namespaced
+  `useTranslation` interfaces. Shared labels use `common`.
 - Parent preview navigation (`STUDIO_NAVIGATE`, `WIREFRAME_READY`, `WIREFRAME_PATH_CHANGED`).
 - English/Japanese with language-change messages in both directions.
 - React and the dependencies already supplied by Wireframe Studio.
@@ -45,9 +49,10 @@ not include this repository's development/test package.
 
 ## Validate and release
 
-Run `npm test` for manifest, message boundary and preference tests. Verify the generated
-project through Wireframe Studio: navigate every example, change language and theme, test
-forms and back/forward, and inspect a narrow viewport.
+Run `npm test` for manifest, Studio naming/locale/document contracts, translations, message
+boundaries and preferences. Verify the generated project through Wireframe Studio: select
+each screen from Studio's dropdown, check its paired requirements in both languages,
+open standalone documents, test forms and navigation, and inspect a narrow viewport.
 
 Commit changes, update `skeleton/manifest.json`, and publish the matching immutable
 `skeleton@<version>` tag. Only tagged versions are releases; changing `main` alone does not

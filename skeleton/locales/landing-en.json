@@ -1,0 +1,13 @@
+{
+  "navigation": "Example application navigation",
+  "eyebrow": "Headline",
+  "title": "Your page title",
+  "description": "Describe what your users can do here and the value it gives them.",
+  "explore": "Explore example",
+  "image": "Image or illustration",
+  "featureOne": "First feature",
+  "featureTwo": "Second feature",
+  "featureThree": "Third feature",
+  "featureDescription": "A short description of this part of your product.",
+  "footer": "Footer content"
+}

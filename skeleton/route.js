@@ -9,12 +9,16 @@ import Components from './screens/components.js';
 
 // Add every screen here; use a stable route and descriptive name.
 export const routes = [
-  { path: '/', name: 'Home', component: Landing },
-  { path: '/project-overview', name: 'Overview', component: Overview },
-  { path: '/components', name: 'Components', component: Components },
-  { path: '/login', name: 'Sign in', component: Login },
-  { path: '/signup', name: 'Create an account', component: Signup },
-  { path: '/forgot-password', name: 'Forgot password', component: ForgotPassword },
-  { path: '/reset-password', name: 'Reset password', component: ResetPassword },
-  { path: '/dashboard', name: 'Dashboard', component: Dashboard },
+  { path: '/', name: 'home', component: Landing },
+  { path: '/project-overview', name: 'overview', component: Overview },
+  { path: '/components', name: 'components', component: Components },
+  { path: '/login', name: 'login', component: Login },
+  { path: '/signup', name: 'signup', component: Signup },
+  {
+    path: '/forgot-password',
+    name: 'forgotPassword',
+    component: ForgotPassword,
+  },
+  { path: '/reset-password', name: 'resetPassword', component: ResetPassword },
+  { path: '/dashboard', name: 'dashboard', component: Dashboard },
 ];

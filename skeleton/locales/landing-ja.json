@@ -1,0 +1,13 @@
+{
+  "navigation": "アプリのナビゲーション例",
+  "eyebrow": "見出し",
+  "title": "ページのタイトル",
+  "description": "利用者がここでできることと、その価値を説明します。",
+  "explore": "サンプルを見る",
+  "image": "画像・イラスト",
+  "featureOne": "機能 1",
+  "featureTwo": "機能 2",
+  "featureThree": "機能 3",
+  "featureDescription": "この機能について簡潔に説明します。",
+  "footer": "フッターの内容"
+}
