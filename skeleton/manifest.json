@@ -1,6 +1,6 @@
 {
   "name": "skeleton",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Neutral project wireframes and reusable React components for Sandpack",
   "includes": [
     ".gitignore",
